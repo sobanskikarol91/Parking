@@ -3,16 +3,17 @@
 #include <SFML/Graphics.hpp>
 
 // slot - miejsce parkingowe
-class Slot : Drawable // dziedziczymy po interfejsie  rysowania
+class Slot : public Drawable // dziedziczymy po interfejsie  rysowania
 {
 	Samochod *samochod; // jaki samochod jest zaparkowany
-	Sprite sprite;		
+	Sprite sprite;
 	Texture texture;
 
 public:
+	Slot() { };
 	Slot(int x, int y)   // okreslamy pozycje umieszczenia slotu na ekranie
 	{
-		texture.loadFromFile("grafika/puste.png"); // wczytujemy obrazek
+		texture.loadFromFile("grafika/pusty.png"); // wczytujemy obrazek
 		sprite.setTexture(texture);
 		sprite.setPosition(x, y);
 	}
@@ -33,9 +34,10 @@ public:
 			cout << "Nie mozna wyparkowac, poniewaz nie ma zadnego zaparkowanego samochodu!" << endl;
 	}
 
-	void draw()
+	void draw(RenderTarget & target, RenderStates states) const
 	{
-		
+		target.draw(sprite, states);
+		detekcja_klikniecia(&target, sprite);
 	}
 };
 

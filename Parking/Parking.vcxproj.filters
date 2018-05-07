@@ -27,6 +27,12 @@
     <ClInclude Include="Slot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Ciezarowy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Przycisk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Samochod.cpp">
@@ -42,6 +48,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Slot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Ciezarowy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Przycisk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -122,15 +122,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Ciezarowy.h" />
     <ClInclude Include="DodatkoweFunkcje.h" />
     <ClInclude Include="Parking.h" />
+    <ClInclude Include="Przycisk.h" />
     <ClInclude Include="Samochod.h" />
     <ClInclude Include="Slot.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ciezarowy.cpp" />
     <ClCompile Include="DodatkoweFunkcje.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parking.cpp" />
+    <ClCompile Include="Przycisk.cpp" />
     <ClCompile Include="Samochod.cpp" />
     <ClCompile Include="Slot.cpp" />
   </ItemGroup>
