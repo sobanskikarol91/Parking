@@ -37,7 +37,6 @@ public:
 	void draw(RenderTarget & target, RenderStates states) const
 	{
 		target.draw(sprite, states);
-		detekcja_klikniecia(&target, sprite);
 	}
 };
 

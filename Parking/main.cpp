@@ -12,13 +12,11 @@ using namespace sf;
 
 void okno()
 {
-
-	Parking parking(1, 1, 130, 100);
+	Parking parking(4, 4, 130, 100);
 	RenderWindow okno{ VideoMode(1000, 1000), "Parking" };
 	okno.setFramerateLimit(60);
 	Event event; // do interakci z oknem
-
-
+	
 	while (okno.isOpen())
 	{
 		okno.clear(Color::Blue);  // czysc ekran na czarno
