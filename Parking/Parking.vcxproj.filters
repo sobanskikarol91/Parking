@@ -21,6 +21,12 @@
     <ClInclude Include="Parking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DodatkoweFunkcje.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Slot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Samochod.cpp">
@@ -30,6 +36,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DodatkoweFunkcje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Slot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

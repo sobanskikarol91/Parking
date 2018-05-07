@@ -122,13 +122,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DodatkoweFunkcje.h" />
     <ClInclude Include="Parking.h" />
     <ClInclude Include="Samochod.h" />
+    <ClInclude Include="Slot.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DodatkoweFunkcje.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Parking.cpp" />
     <ClCompile Include="Samochod.cpp" />
+    <ClCompile Include="Slot.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

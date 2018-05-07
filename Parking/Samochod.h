@@ -1,15 +1,22 @@
 #pragma once
 #include <iostream>
+#include <SFML/Graphics.hpp>
+
 using namespace std;
+using namespace sf;
 
 
 class Samochod
 {
 	string model;
-	string nazwa;
+	int rok;
+
+	Texture tekstura;
+	Sprite sprite;
 
 public:
-	Samochod(string nazwa, string model) : nazwa(nazwa), model(model) {};
+	Samochod() {}
+	Samochod(string model, int rok) : model(model), rok(rok){};
 
 	//friend ostream & operator<<(ostream & ekran, Samochod & samochod)
 	//{
