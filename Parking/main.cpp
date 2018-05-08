@@ -32,7 +32,7 @@ void okno()
 	}
 }
 
-
+#include "Przycisk.h"
 void main()
 {
 	okno();

@@ -3,7 +3,6 @@
 #include <iostream>
 #include "Samochod.h"
 #include "Slot.h"
-#include <string>
 #include "Przycisk.h"
 
 using namespace std;
@@ -15,9 +14,9 @@ class Parking : public Drawable // dziedziczymy po interfejsie  rysowania
 	Text ile_zaparkowanych_txt;
 	int ile_zaparkowanych;
 	vector<Slot> sloty;
-	
-	Przycisk zaparkuj_btn = Przycisk("Zaparkuj", IntRect(500, 50, 200, 100));
-	Przycisk wyparkuj_btn = Przycisk("Wyparkuj", IntRect(500, 200, 200, 100));
+
+	// tworzymy przycisk, podajac nazwe obrazka ktory sie zaladuje, jego wymiary z pozycja ustawienia, oraz metode ktora sie wywola po kliknieciu przycisku
+	Przycisk zaparkuj_btn = Przycisk("Zaparkuj", IntRect(500, 50, 200, 100), [this] { zaparkuj(); });
 
 public:
 	Parking(int rzedy, int kolumny, int kolumna_odstep, int rzad_odstep) :rzedy(rzedy), kolumny(kolumny), ile_zaparkowanych(0) // podajemy ile miejsc ma miec parking
@@ -35,21 +34,30 @@ public:
 		ile_zaparkowanych_txt.setCharacterSize(20);
 	}
 
+	void zaparkuj()
+	{
+		cout << "parkuje!";
+	}
+
+	void wyparkuj()
+	{
+
+	}
+
 	void draw(RenderTarget & target, RenderStates state) const // implementujemy metode odpowiedzialna za rysowanie na ekranie obiekty typu parking
 	{
+		// rysuj miejsca parkingowe
 		for (size_t i = 0; i < rzedy*kolumny; i++)
-		{
 			target.draw(sloty[i]);
-		}
+
 		target.draw(ile_zaparkowanych_txt);
 		target.draw(zaparkuj_btn);
-		target.draw(wyparkuj_btn);
+		//target.draw(wyparkuj_btn);
 
+		// rzutujemy z RenderTarget na RenderWindow
 		RenderWindow * okno = dynamic_cast<RenderWindow*>(&target);
-		if (zaparkuj_btn.detekcja_klikniecia(okno))
-			cout << "zaparkuj";
-		else if (wyparkuj_btn.detekcja_klikniecia(okno))
-			cout << "wyparkuj";
+		zaparkuj_btn.detekcja_klikniecia(okno);
 	}
 };
+
 
