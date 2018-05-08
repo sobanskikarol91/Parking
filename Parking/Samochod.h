@@ -5,10 +5,10 @@
 using namespace std;
 using namespace sf;
 
-
 class Samochod
 {
-	string model;
+	string marka;
+	int predkosc;
 	int rok;
 
 	Texture tekstura;
@@ -16,12 +16,21 @@ class Samochod
 
 public:
 	Samochod() {}
-	Samochod(string model, int rok) : model(model), rok(rok){};
+	Samochod(string marka, int predkosc, int rok) : marka(marka), predkosc(predkosc), rok(rok) {};
 
-	//friend ostream & operator<<(ostream & ekran, Samochod & samochod)
-	//{
-	//	cout << nazwa << " " << model;
-	//}
+	// przeciazenie operatora wprowadzania danych 
+	friend istream & operator>>(istream & klawiatura, Samochod & s)
+	{
+		cout << "Podaj marke samochodu: ";
+		klawiatura >> s.marka;
+		cout << "Podaj maksymalna predkosc: ";
+		cin >> s.predkosc;
+		return klawiatura;
+	}
 
+	Texture * pobierz_teksture()
+	{
+		return &tekstura;
+	}
 };
 

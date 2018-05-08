@@ -28,11 +28,12 @@ void okno()
 			okno.close();
 			break;
 		}
+
+		parking.aktualizuj(&okno);
 		okno.display();
 	}
 }
 
-#include "Przycisk.h"
 void main()
 {
 	okno();

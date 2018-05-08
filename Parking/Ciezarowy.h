@@ -3,9 +3,11 @@
 
 class Ciezarowy : public Samochod
 {
-	int maksymalny_zaladunek;
+	int max_zaladunek;
 
 public:
-	Ciezarowy(string nazwa, int rok) : Samochod(nazwa, rok) {};
+	Ciezarowy() : Samochod() {};
+	Ciezarowy(string nazwa, int predkosc, int rok, int max_zaladunek) 
+		: Samochod(nazwa, predkosc, rok), max_zaladunek(max_zaladunek) {};
 };
 

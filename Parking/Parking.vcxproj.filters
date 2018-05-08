@@ -21,9 +21,6 @@
     <ClInclude Include="Parking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DodatkoweFunkcje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Slot.h">
       <Filter>Header Files</Filter>
     </ClInclude>

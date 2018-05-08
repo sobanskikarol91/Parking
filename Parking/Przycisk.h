@@ -12,12 +12,14 @@ class Przycisk : public Drawable
 	Texture domyslna_tekstura;
 	Texture wcisnieta_tekstura;
 	Sprite sprite;
-	function<void()> akcja_klikniecia;
+	bool aktywny; // czy przycisk aktywny
 
 public:
 	Przycisk() {};
-	Przycisk(string nazwa, IntRect obszar, function<void()> akcja_klikniecia) : akcja_klikniecia(akcja_klikniecia) // nazwa pozycja i wymiar i metoda jaka ma sie wywolac przy kliknieciu
-	{		
+	Przycisk(string nazwa, IntRect obszar, bool pokaz) // pokaz - czy przycisk ma byc schowany na poczatku 
+	{
+		pokaz_przycisk(pokaz);
+
 		domyslna_tekstura.loadFromFile("grafika/" + nazwa + ".png");
 		sprite.setPosition(obszar.left, obszar.top);
 		sprite.setTexture(domyslna_tekstura);
@@ -29,8 +31,11 @@ public:
 			mysz.y >= granica.top && mysz.y <= granica.top + granica.height);
 	}
 
-	void detekcja_klikniecia(const Window * okno) const
+	bool detekcja_klikniecia(const Window * okno) const
 	{
+		// jezeli jest nieaktyny zwroc false
+		if (!aktywny) return false;
+		cout << "detekcja";
 		// pozycja myszy wzgledem okna
 		Vector2i mysz = Mouse::getPosition(*okno);
 
@@ -38,18 +43,26 @@ public:
 		FloatRect granica = sprite.getGlobalBounds();
 
 		// sprawdzamy czy wystapilo klikniecie w obszarze obiektu
-		if (mysz_nad_obiektem(mysz, granica) && Mouse::isButtonPressed(Mouse::Left))
-			akcja_klikniecia();
+		return (mysz_nad_obiektem(mysz, granica) && Mouse::isButtonPressed(Mouse::Left));
 	}
 
-	void ustaw_wcisnieta_teksture(Texture nowa_teksutra)
+	void ustaw_wcisnieta_teksture(Texture * nowa_teksutra)
 	{
-		sprite.setTexture(nowa_teksutra);
+		sprite.setTexture(*nowa_teksutra);
 	}
 
 	void draw(RenderTarget & target, RenderStates state) const
 	{
 		target.draw(sprite);
+	}
+
+	void pokaz_przycisk(bool state)
+	{
+		aktywny = state;
+		if (!aktywny)  // jak aktywny pokaz wizualnie
+			sprite.setColor(Color::Transparent);
+		else
+			sprite.setColor(Color::White);
 	}
 };
 
