@@ -30,6 +30,9 @@
     <ClInclude Include="Przycisk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Parametry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Samochod.cpp">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Przycisk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Parametry.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -123,6 +123,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ciezarowy.h" />
+    <ClInclude Include="Parametry.h" />
     <ClInclude Include="Parking.h" />
     <ClInclude Include="Przycisk.h" />
     <ClInclude Include="Samochod.h" />
@@ -132,6 +133,7 @@
     <ClCompile Include="Ciezarowy.cpp" />
     <ClCompile Include="DodatkoweFunkcje.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Parametry.cpp" />
     <ClCompile Include="Parking.cpp" />
     <ClCompile Include="Przycisk.cpp" />
     <ClCompile Include="Samochod.cpp" />
