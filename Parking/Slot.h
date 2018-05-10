@@ -9,6 +9,7 @@ class Slot : public Drawable // dziedziczymy po interfejsie  rysowania
 	bool zajety;
 	Samochod samochod; // jaki samochod jest zaparkowany
 	Przycisk przycisk;
+
 public:
 	Slot() { };
 
@@ -46,6 +47,11 @@ public:
 	Przycisk * pobierz_przycisk()
 	{
 		return &przycisk;
+	}
+
+	Samochod * pobierz_samochod()
+	{
+		return &samochod;
 	}
 };
 

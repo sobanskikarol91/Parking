@@ -6,6 +6,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include "Slot.h"
+#include "Samochod.h"
+#include "Ciezarowy.h"
 
 using namespace std;
 using namespace sf;
@@ -36,5 +38,8 @@ void okno()
 
 void main()
 {
+	Ciezarowy c;
 	okno();
+	system("pause");
+
 }

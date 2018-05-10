@@ -123,21 +123,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ciezarowy.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="Osobowy.h" />
     <ClInclude Include="Parametry.h" />
     <ClInclude Include="Parking.h" />
     <ClInclude Include="Przycisk.h" />
     <ClInclude Include="Samochod.h" />
     <ClInclude Include="Slot.h" />
+    <ClInclude Include="Sportowy.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ciezarowy.cpp" />
     <ClCompile Include="DodatkoweFunkcje.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Osobowy.cpp" />
     <ClCompile Include="Parametry.cpp" />
     <ClCompile Include="Parking.cpp" />
     <ClCompile Include="Przycisk.cpp" />
     <ClCompile Include="Samochod.cpp" />
     <ClCompile Include="Slot.cpp" />
+    <ClCompile Include="Sportowy.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
