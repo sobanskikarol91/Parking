@@ -15,7 +15,7 @@ using namespace sf;
 void okno()
 {
 	Parking parking(4, 4, 130, 100);
-	RenderWindow okno{ VideoMode(1000, 1000), "Parking" };
+	RenderWindow okno{ VideoMode(1000, 700), "Parking" };
 	okno.setFramerateLimit(60);
 	Event event; // do interakci z oknem
 	
@@ -41,5 +41,4 @@ void main()
 	Ciezarowy c;
 	okno();
 	system("pause");
-
 }

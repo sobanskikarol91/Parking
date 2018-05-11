@@ -16,15 +16,8 @@ protected:   // dostepne dla klas pochodnych
 	Sprite sprite;
 
 public:
-	Samochod() : marka("nieznana")   // domyslny konstruktor z lista inicjalizacyjna
-	{
-		tekstura.loadFromFile("grafika/ciezarowy.png");
-	}
-
-	Samochod(string marka, Parametry parametry) : marka(marka), parametry(parametry)
-	{
-		tekstura.loadFromFile("grafika/ciezarowy.png");
-	}
+	Samochod() : marka("nieznana") {};  // domyslny konstruktor z lista inicjalizacyjna
+	Samochod(string marka, Parametry parametry) : marka(marka), parametry(parametry) {};
 
 	// przeciazenie operatora wprowadzania danych 
 	friend istream & operator>>(istream & klawiatura, Samochod & s)

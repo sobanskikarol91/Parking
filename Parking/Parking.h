@@ -11,24 +11,21 @@
 #include "InputHandler.h" // do korygowania wprowadzonych danych
 using namespace std;
 
-class Parking : public Drawable // dziedziczymy po interfejsie  rysowania
+class Parking : public Drawable // dziedziczymy po interfejsie rysowania
 {
 private:
 
 	int rzedy, kolumny, ile_zaparkowanych;
 	Font czcionka;
-	Parametry statystyki; // przechowujemy laczne statystyki o samochodach na parkingu;
 	Text ile_zaparkowanych_txt, sr_masa_txt, sr_konie_mechaniczne_txt, sr_predkosc_txt, sr_zuzycie_benzyny_txt;
 	vector<Text*> lista_tekstow; // przechowujemy wskaznik do wszystkich tekstow, aby szybko wykonywac na nich operacje za pomoca petli
-	vector<Slot> sloty;
-
-	// tworzymy przycisk, podajac nazwe obrazka ktory sie zaladuje, jego wymiary z pozycja ustawienia, oraz metode ktora sie wywola po kliknieciu przycisku
-	Przycisk osobywy_btn = Przycisk("Osobowy", IntRect(500, 50, 200, 100), false);
-	Przycisk ciezarowy_btn = Przycisk("Ciezarowy", IntRect(750, 50, 200, 100), false);
+	vector<Slot> sloty;          // sloty w ktorych parkujemy samochody
+	Texture znak_tekstura;       // znak parkingu
+	Sprite znak_sprite;
 
 public:
 	Parking(int rzedy, int kolumny, int kolumna_odstep, int rzad_odstep)
-		:rzedy(rzedy), kolumny(kolumny), ile_zaparkowanych(0)// podajemy ile miejsc ma miec parking
+		:rzedy(rzedy), kolumny(kolumny), ile_zaparkowanych(0)// podajemy ile miejsc ma miec parking oraz jaki odstep miedzy sklotami
 	{
 		// tworzymy sloty do parkowania i dodajemy je do listy
 		for (size_t r = 0; r < rzedy; r++)
@@ -36,6 +33,14 @@ public:
 				sloty.push_back(Slot(rzad_odstep * r, kolumna_odstep * k));
 
 		ustaw_teksty();
+		ustaw_znak();
+	}
+
+	void ustaw_znak()
+	{
+		znak_tekstura.loadFromFile("grafika/znak.png");
+		znak_sprite.setTexture(znak_tekstura);
+		znak_sprite.setPosition(900, 0);
 	}
 
 	void aktualizuj(RenderWindow * okno)
@@ -57,16 +62,26 @@ public:
 
 	void uaktualnij_statystyki()
 	{
+		Parametry statystyki;
+
 		// dodajemy wszystkie parametry samochodow do siebie
 		for (size_t i = 0; i < sloty.size(); i++)
 			if (sloty[i].czy_zajety()) // jezeli jest zajetyp rzez samochod do dodajemy parametry
 				statystyki += sloty[i].pobierz_samochod()->pobierz_parametry();
 
-		ile_zaparkowanych_txt.setString("zaparkowane samochody: " + to_string(ile_zaparkowanych) + "/" + to_string(sloty.size()));
-		sr_masa_txt.setString("Sr. masa:       " + to_string(statystyki.get_masa()));
-		sr_predkosc_txt.setString("Sr. predkosc:   " + to_string(statystyki.get_predkosc()));
-		sr_konie_mechaniczne_txt.setString("Sr. km:         " + to_string(statystyki.get_km()));
-		sr_zuzycie_benzyny_txt.setString("Sr. zuz. benz. " + to_string(statystyki.get_zurz_benz()));
+		if(ile_zaparkowanych > 0)
+		statystyki /= ile_zaparkowanych;
+
+		ile_zaparkowanych_txt.setString(
+			"zaparkowane samochody: " + to_string(ile_zaparkowanych) + "/" + to_string(sloty.size()));
+		sr_masa_txt.setString(
+			"Sr. masa: " + to_string(statystyki.get_masa()));
+		sr_predkosc_txt.setString(
+			"Sr. predkosc: " + to_string(statystyki.get_predkosc()));
+		sr_konie_mechaniczne_txt.setString(
+			"Sr. km: " + to_string(statystyki.get_km()));
+		sr_zuzycie_benzyny_txt.setString(
+			"Sr. zuz. benz.: " + to_string(statystyki.get_zurz_benz()));
 	}
 
 	void ustaw_teksty()
@@ -91,11 +106,6 @@ public:
 
 	// prywatne metody************************************************************************************************************
 private:
-	void pokaz_przyciski_samochodow(bool pokaz)
-	{
-		osobywy_btn.pokaz_przycisk(pokaz);
-		ciezarowy_btn.pokaz_przycisk(pokaz);
-	}
 
 	void zaparkuj(int miejsce) // dodaj samochod do konkretnego slotu
 	{
@@ -104,6 +114,7 @@ private:
 		Osobowy osobowy;
 		Sportowy sportowy;
 
+		system("cls"); // czysci konsole
 		cout << "Jaki samochod chcesz stworzyc?" << endl;
 		cout << "1) Ciezarowy" << endl;
 		cout << "2) Osobowy" << endl;
@@ -135,9 +146,9 @@ private:
 	void wyparkuj(int miejsce)
 	{
 		ile_zaparkowanych--;
-		uaktualnij_statystyki();
 		cout << "Wyparkuj samochod" << endl;
 		sloty[miejsce].wyparkuj();
+		uaktualnij_statystyki();
 	}
 
 	void draw(RenderTarget & target, RenderStates state) const // implementujemy metode odpowiedzialna za rysowanie na ekranie obiekty typu parking
@@ -150,8 +161,8 @@ private:
 		for (size_t i = 0; i < lista_tekstow.size(); i++)
 			target.draw(*lista_tekstow[i]);
 
-		target.draw(osobywy_btn);
-		target.draw(ciezarowy_btn);
+		// rysujemy znak;
+		target.draw(znak_sprite);
 	}
 };
 

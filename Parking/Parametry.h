@@ -35,12 +35,28 @@ public:
 		return *this;
 	}
 
+	// przeciazenie operatora dzielenia przez skalar przyda sie do obliczania srednich statystyk
+	
+	Parametry operator/=(int skalar)
+	{
+		if (skalar != 0)
+		{
+			masa /= skalar;
+			zuzycie_benzyny /= skalar;
+			predkosc /= skalar;
+			konie_mechaniczne /= skalar;
+		}
+		else
+			cout << "dzielenie przez zero!";
+
+		return *this;
+	}
 	// przeciazenie operatora wczytania
 	friend istream & operator>>(istream & klawiatura, Parametry & p)
 	{
 		cout << "Masa: ", klawiatura >> p.masa;
 		cout << "Ilosc Koni mechanicznych: ", klawiatura >> p.konie_mechaniczne;
-		cout << "Zuzycnie benzyny", klawiatura >> p.zuzycie_benzyny;
+		cout << "Zuzycnie benzyny: ", klawiatura >> p.zuzycie_benzyny;
 		cout << "Predkosc: ", klawiatura >> p.predkosc;
 		return klawiatura;
 	}

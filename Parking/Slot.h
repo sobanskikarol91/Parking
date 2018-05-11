@@ -40,7 +40,6 @@ public:
 
 	bool czy_zajety()
 	{
-		cout << "zajety: " << zajety << endl;
 		return zajety;
 	}
 
