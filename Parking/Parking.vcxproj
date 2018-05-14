@@ -134,8 +134,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ciezarowy.cpp" />
-    <ClCompile Include="DodatkoweFunkcje.cpp" />
-    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Osobowy.cpp" />
     <ClCompile Include="Parametry.cpp" />
